@@ -71,3 +71,82 @@ int main(){
         printf("%d ", a[i]);
     }
 }
+
+
+
+/*
+
+//for passes
+#include <stdio.h>
+
+void merge(int a[], int low, int mid, int high) {
+    int i, j, k, b[20], r, x;
+
+    i = low;
+    j = mid + 1;
+    k = low;
+
+    // Merging two halves
+    while (i <= mid && j <= high) {
+        if (a[i] < a[j]) {
+            b[k] = a[i];
+            i++;
+        } else {
+            b[k] = a[j];
+            j++;
+        }
+        k++;
+    }
+
+    // If there are any remaining elements in the left half
+    if (i <= mid) {
+        for (r = i; r <= mid; r++) {
+            b[k] = a[r];
+            k++;
+        }
+    } 
+    // If there are any remaining elements in the right half
+    else {
+        for (r = j; r <= high; r++) {
+            b[k] = a[r];
+            k++;
+        }
+    }
+
+    // Copy the merged array back into the original array
+    for (x = low; x <= high; x++) {
+        a[x] = b[x];
+    }
+
+    // Print the array after the merge
+    printf("Array after merge from %d to %d: ", low, high);
+    for (x = 0; x <= high; x++) {
+        printf("%d ", a[x]);
+    }
+    printf("\n");
+}
+
+void merge_sort(int a[], int low, int high) {
+    int mid;
+    if (low < high) {
+        mid = (low + high) / 2;
+        merge_sort(a, low, mid);        // Sort the left half
+        merge_sort(a, mid + 1, high);   // Sort the right half
+        merge(a, low, mid, high);       // Merge the two halves
+    }
+}
+
+int main() {
+    int i;
+    int a[5] = {9, 7, 100, 2, 1};  // Example array
+    merge_sort(a, 0, 4);            // Sorting the array
+
+    printf("Final sorted array: \n");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", a[i]);  // Print the sorted array
+    }
+    printf("\n");
+
+    return 0;
+}
+*/
