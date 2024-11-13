@@ -1,0 +1,98 @@
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // Choose the last element as pivot
+    int i = (low - 1);  // Index of smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+
+
+
+//middle
+
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivotIndex = low + (high - low) / 2;  // Choose the middle element index as pivot
+    int pivotValue = arr[pivotIndex];
+   
+    // Move the pivot element to the end
+    swap(&arr[pivotIndex], &arr[high]);
+
+    int i = low;  // Index of smaller element
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivotValue) {
+            swap(&arr[i], &arr[j]);
+            i++;
+        }
+    }
+    swap(&arr[i], &arr[high]);  // Place the pivot element in its correct position
+    return i;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+
+//first
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivotValue = arr[low];  // Choose the first element as pivot
+    int i = low + 1;  // Index of the first element greater than pivot
+
+    for (int j = low + 1; j <= high; j++) {
+        if (arr[j] < pivotValue) {
+            swap(&arr[i], &arr[j]);
+            i++;
+        }
+    }
+    swap(&arr[low], &arr[i - 1]);  // Place the pivot element in its correct position
+    return (i - 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
