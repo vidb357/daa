@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+void sort(int a[], int size) {
+    int i, j, temp;
+    for (i = 0; i < size - 1; i++) {
+        for (j = 0; j < size - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+
+void BS(int a[], int find, int size){
+
+    int beg, mid, end, flag=0;
+
+    beg=0;
+    end = size-1;
+
+    while(beg<=end){
+
+        mid = (beg+end)/2;
+
+        if(a[mid]==find){
+            flag=1;
+
+            printf("Found at %d \n", mid+1);
+           break;
+            
+        }
+
+        if (a[mid]> find){
+            end =mid-1;
+        }
+
+        if (a[mid]<find){
+            beg = mid+1;
+        }
+    }
+
+    if (flag==0){
+        printf("Not found");
+    }
+
+   
+
+  
+}
+
+
+
+
+
+int main(){
+
+    int a[5]={8,2,3,9,1};
+    sort(a,5);
+    BS(a,9,5);
+    return 0;
+}
